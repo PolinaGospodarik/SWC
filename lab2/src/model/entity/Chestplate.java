@@ -1,0 +1,12 @@
+package model.entity;
+
+public class Chestplate extends Ammunition{
+    public Chestplate(String name, String material, double weight, double price ) {
+        super(name, material, weight, price, "Chestplate");
+    }
+
+    @Override
+    public String toString() {
+        return "Тип: Chestplate"+super.toString();
+    }
+}

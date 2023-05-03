@@ -1,4 +1,5 @@
 package util;
+import java.util.Objects;
 import java.util.Scanner;
 import model.entity.Ammunition;
 import model.entity.Chestplate;
@@ -8,20 +9,26 @@ import model.entity.Sword;
 public class Creator {
     public static Ammunition Create() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Введите тип:\n 1.Helmet\n 2.Chesplate\n 3.Sword\n");
+        System.out.println("Введите тип:\n 1.Helmet\n 2.Chesplate\n 3.Sword");
         int a= in.nextInt();
+        String type = "";
         switch (a){
             case 1:
-                System.out.println("Helmet");
+                type ="Helmet";
                 break;
             case 2:
-                System.out.println("Chesplate");
+                type = "Chestplate";
                 break;
             case 3:
-                System.out.println("Sword");
+                type = "Sword";
                 break;
+            default: {
+                System.out.println("Ошибка ввода");
+                break;
+            }
+
         }
-        String type = in.nextLine();
+        in.nextLine();
         System.out.println("Введите название: ");
         String name = in.nextLine();
         System.out.println("Введите материал: ");
@@ -30,9 +37,9 @@ public class Creator {
         double weight = in.nextDouble();
         System.out.println("Введите цену: ");
         double price = in.nextDouble();
-        if (type == "Chesplate") {
+        if (Objects.equals(type, "Chestplate")) {
             return new Chestplate(name, material, weight, price);
-        } else if (type == "Sword") {
+        } else if (Objects.equals(type, "Sword")) {
             return new Sword(name, material, weight, price);
         } else {
             return new Helmet(name, material, weight, price);

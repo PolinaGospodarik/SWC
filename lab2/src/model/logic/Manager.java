@@ -1,6 +1,7 @@
 package model.logic;
 
 import model.entity.Ammunition;
+import model.entity.Counter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +13,6 @@ public class Manager {
         list.add(ammunition);
     }
 
-    public static void Print() {
-        for(Ammunition ammunition : list) {
-            System.out.println(ammunition.toString());
-        }
-    }
     public static void Sum() {
         double sum=0;
         for (Ammunition ammunition: list){

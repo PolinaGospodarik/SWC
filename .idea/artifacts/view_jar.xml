@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="view:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Ammunition</output-path>
+    <root id="archive" name="view.jar">
+      <element id="module-output" name="view" />
+    </root>
+  </artifact>
+</component>

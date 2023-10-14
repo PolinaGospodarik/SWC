@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lab2/Ammunition/Ammunition.iml" filepath="$PROJECT_DIR$/lab2/Ammunition/Ammunition.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SWC.iml" filepath="$PROJECT_DIR$/SWC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab2/entity/entity.iml" filepath="$PROJECT_DIR$/lab2/entity/entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab2/logic/logic.iml" filepath="$PROJECT_DIR$/lab2/logic/logic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab2/util/util.iml" filepath="$PROJECT_DIR$/lab2/util/util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab2/view/view.iml" filepath="$PROJECT_DIR$/lab2/view/view.iml" />
+    </modules>
+  </component>
+</project>

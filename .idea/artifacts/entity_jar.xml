@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="entity:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Ammunition</output-path>
+    <root id="archive" name="entity.jar">
+      <element id="module-output" name="entity" />
+    </root>
+  </artifact>
+</component>

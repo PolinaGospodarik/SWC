@@ -45,4 +45,23 @@ public class Writer {
             ex.printStackTrace();
         }
     }
+
+    public static void write(String filePath, String text) {
+
+        boolean result = true;
+        try {
+
+            if (!filePath.toLowerCase().endsWith(".txt")) {
+                filePath += ".txt";
+            }
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            writer.write(text);
+            writer.close();
+            JOptionPane.showMessageDialog(null, "Файл успешно сохранен.");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Произошла ошибка при сохранении файла.");
+            ex.printStackTrace();
+        }
+    }
 }

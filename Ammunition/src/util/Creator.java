@@ -60,10 +60,23 @@ public class Creator {
         if (Objects.equals(type, "Chestplate")) {
             return new Chestplate(name, material, weight, price);
         } else if (Objects.equals(type, "Sword")) {
-            System.out.println("s");
             return new Sword(name, material, weight, price);
         } else {
             return new Helmet(name, material, weight, price);
         }
     }
+
+    public static Ammunition Create(String type)
+    {
+        System.out.println(type);
+
+        if (Objects.equals(type, "Chestplate")) {
+            return new Chestplate();
+        } else if (Objects.equals(type, "Sword")) {
+            return new Sword();
+        } else {
+            return new Helmet();
+        }
+    }
+
 }

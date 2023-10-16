@@ -10,7 +10,6 @@ import logic.Writer;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -130,6 +129,20 @@ public class MainWindow extends Component {
                 String filePath = fileChooser.getSelectedFile().getPath();
 
                 Writer.writeToBin(filePath);
+            }
+        });
+
+
+        outSave_menu.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Текстовые файлы(*.txt)", "txt");
+            fileChooser.setFileFilter(filter);
+
+            int returnValue = fileChooser.showSaveDialog(null);
+
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                String filePath = fileChooser.getSelectedFile().getPath();
+                Writer.write(filePath, textArea.getText());
             }
         });
 

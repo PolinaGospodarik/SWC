@@ -6,6 +6,7 @@ import util.Creator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +25,9 @@ public class CreatorWindow extends JDialog {
 
         // Создаем панель для ввода полей и кнопки
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(4, 2));
+        inputPanel.setLayout(new GridLayout(5, 2));
+
+        JCheckBox checkBox = new JCheckBox("Случайно");
 
         JTextField textField1 = new JTextField(20);
         JTextField textField2 = new JTextField(20);
@@ -44,6 +47,7 @@ public class CreatorWindow extends JDialog {
         inputPanel.add(textField3);
         inputPanel.add(label4);
         inputPanel.add(textField4);
+        inputPanel.add(checkBox);
 
         JButton submitButton = new JButton("Отправить");
 
@@ -62,33 +66,50 @@ public class CreatorWindow extends JDialog {
         add(secondPanel);
 
         submitButton.addActionListener(e -> {
-            // Получаем выбранный элемент из меню
+
 
             Map<String, String> dict = new HashMap<>();
             dict.put("Нагрудник", "Chestplate");
             dict.put("Шлем", "Helmet");
             dict.put("Меч", "Sword");
 
-            try {
-                Manager.Add(Creator.Create(
-                        dict.get((String) comboBox.getSelectedItem()),
-                        textField1.getText(),
-                        textField2.getText(),
-                        Integer.parseInt(textField3.getText()),
-                        Integer.parseInt(textField4.getText())
-                ));
-                res = "Добавлено!";
-            } catch (Exception ex) {
-                res = "Ошибка!";
+            if(checkBox.isSelected())
+            {
+                Manager.Add(Creator.Create(dict.get((String) comboBox.getSelectedItem())));
+                JOptionPane.showMessageDialog(parent, "Добавлено");
             }
+            else
+            {
+                try {
+                    Manager.Add(Creator.Create(
+                            dict.get((String) comboBox.getSelectedItem()),
+                            textField1.getText(),
+                            textField2.getText(),
+                            Integer.parseInt(textField3.getText()),
+                            Integer.parseInt(textField4.getText())
+                    ));
+                    JOptionPane.showMessageDialog(parent, "Добавлено");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(parent, "Ошибка");
+                }
+            }
+
 
             // Закрываем окно
             dispose();
 
             // После закрытия окна, отображаем сообщение
-            JOptionPane.showMessageDialog(parent, res);
+
         });
 
+        checkBox.addActionListener(e ->{
+
+            boolean isSelected = checkBox.isSelected();
+            textField1.setEnabled(!isSelected);
+            textField2.setEnabled(!isSelected);
+            textField3.setEnabled(!isSelected);
+            textField4.setEnabled(!isSelected);
+            });
 
     }
 

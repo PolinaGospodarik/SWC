@@ -134,6 +134,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="entity" exported="" />
   </component>
 </module>

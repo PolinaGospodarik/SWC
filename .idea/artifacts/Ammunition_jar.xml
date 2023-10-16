@@ -1,11 +1,8 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="Ammunition:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Ammunition</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/Ammunition_jar</output-path>
     <root id="archive" name="Ammunition.jar">
       <element id="module-output" name="Ammunition" />
-      <element id="module-output" name="view" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/logic_jar/logic.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/util_jar/util.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

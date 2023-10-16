@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+@JsonTypeName("Helmet")
 public class Helmet extends Ammunition {
 
     private static final List<String> names = new ArrayList<>(Arrays.asList(

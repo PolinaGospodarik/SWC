@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+@JsonTypeName("Chestpate")
 public class Chestplate extends Ammunition {
 
     private static final List<String> names = new ArrayList<>(Arrays.asList(

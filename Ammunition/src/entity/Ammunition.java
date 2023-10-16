@@ -3,6 +3,20 @@ package entity;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Chestplate.class, name = "Chestplate"),
+        @JsonSubTypes.Type(value = Helmet.class, name = "Helmet"),
+        @JsonSubTypes.Type(value = Sword.class, name = "Sword"),
+})
 public abstract class Ammunition implements Serializable {
     private String name;
     private String material;

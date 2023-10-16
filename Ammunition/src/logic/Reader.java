@@ -1,5 +1,7 @@
 package logic;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Ammunition;
 import util.Creator;
 
@@ -16,10 +18,10 @@ public class Reader {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath));
 
             Object readObject = objectInputStream.readObject();
+            objectInputStream.close();
+
             if (readObject instanceof List) {
                 List<Ammunition> loadedData = (List<Ammunition>) readObject;
-                objectInputStream.close();
-
                 JOptionPane.showMessageDialog(null, "Данные успешно загружены из бинарного файла.");
                 return loadedData;
             }
@@ -32,7 +34,7 @@ public class Reader {
         }
     }
 
-    public static List<Ammunition> readFromTXT(String filePath) {
+    public static List<Ammunition> readFromTxt(String filePath) {
         try {
 
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
@@ -70,4 +72,27 @@ public class Reader {
         }
         return null;
     }
+
+    public static List<Ammunition> readFromJson(String filePath) {
+        try {
+
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+
+            String line = reader.readLine();
+            ObjectMapper objectMapper = new ObjectMapper();
+            reader.close();
+            List<Ammunition> ammunition = objectMapper.readValue(line, new TypeReference<List<Ammunition>>() {});
+
+            JOptionPane.showMessageDialog(null, "Данные успешно загружены из текстового файла.");
+            return ammunition;
+
+
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Произошла ошибка при чтении файла.");
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
 }

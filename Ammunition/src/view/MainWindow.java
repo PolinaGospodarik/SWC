@@ -64,19 +64,23 @@ public class MainWindow extends Component {
         JMenu saveCondition_menu = new JMenu("Сохранить состояние");
         JMenuItem saveToBinary_menu= new JMenuItem("Сохранить в биинарный файл");
         JMenuItem saveToTxt_menu= new JMenuItem("Сохранить в тестовый файл");
+        JMenuItem saveToJson_menu= new JMenuItem("Сохранить в Json");
 
         JMenu loadCondition_menu = new JMenu("Загрузить состояние");
         JMenuItem loadFromBinary_menu= new JMenuItem("Загрузить из биинарного файла");
         JMenuItem loadFromTxt_menu= new JMenuItem("Загрузить из тестового файла");
+        JMenuItem loadFromJson_menu= new JMenuItem("Загрузить из Json");
 
         fileMenu.add(outSave_menu);
 
         saveCondition_menu.add(saveToBinary_menu);
         saveCondition_menu.add(saveToTxt_menu);
+        saveCondition_menu.add(saveToJson_menu);
         fileMenu.add(saveCondition_menu);
 
         loadCondition_menu.add(loadFromBinary_menu);
         loadCondition_menu.add(loadFromTxt_menu);
+        loadCondition_menu.add(loadFromJson_menu);
         fileMenu.add(loadCondition_menu);
 
         menuBar.add(fileMenu);
@@ -114,7 +118,7 @@ public class MainWindow extends Component {
 
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 String filePath = fileChooser.getSelectedFile().getPath();
-                Writer.writeToTXT(filePath);
+                Writer.writeToTxt(filePath);
             }
         });
 
@@ -129,6 +133,20 @@ public class MainWindow extends Component {
                 String filePath = fileChooser.getSelectedFile().getPath();
 
                 Writer.writeToBin(filePath);
+            }
+        });
+
+        saveToJson_menu.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Бинарные файлы (*.json)", "json");
+            fileChooser.setFileFilter(filter);
+
+            int returnValue = fileChooser.showSaveDialog(null);
+
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                String filePath = fileChooser.getSelectedFile().getPath();
+
+                Writer.writeToJson(filePath);
             }
         });
 
@@ -184,7 +202,7 @@ public class MainWindow extends Component {
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 String filePath = fileChooser.getSelectedFile().getPath();
 
-                List<Ammunition> list = Reader.readFromTXT(filePath);
+                List<Ammunition> list = Reader.readFromTxt(filePath);
 
                 if(list.size() > 0) {
                     Manager.ClearList();
@@ -196,5 +214,32 @@ public class MainWindow extends Component {
                 else textArea.append("Файл не содержит данных");
             }
         });
+
+        loadFromJson_menu.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+
+            // Создаем фильтр для файлов с расширением .bin
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Json файлы (*.json)", "json");
+            fileChooser.setFileFilter(filter);
+
+            int returnValue = fileChooser.showOpenDialog(null);
+
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+
+                String filePath = fileChooser.getSelectedFile().getPath();
+
+                List<Ammunition> list = Reader.readFromJson(filePath);
+                if(Objects.requireNonNull(list).size() > 0) {
+                    Manager.ClearList();
+
+                    for (Ammunition a : list) {
+                        Manager.Add(a);
+                    }
+                }
+                else textArea.append("Файл не содержит данных");
+
+            }
+        });
+
     }
 }

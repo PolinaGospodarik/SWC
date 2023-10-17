@@ -1,0 +1,10 @@
+2023-10-17 18:43:15 INFO  Ammunition:83 - Try creating a random object
+2023-10-17 18:43:15 INFO  Ammunition:90 - Created sword
+2023-10-17 18:43:15 INFO  Ammunition:16 - Try to add object to list
+2023-10-17 18:43:15 INFO  Ammunition:22 - Successfully 
+2023-10-17 18:43:15 INFO  Ammunition:52 - Getting list
+2023-10-17 18:43:30 INFO  Ammunition:24 - Try writing to binary file C:\Users\Максим\Desktop\b.bin
+2023-10-17 18:43:30 INFO  Ammunition:52 - Getting list
+2023-10-17 18:43:30 INFO  Ammunition:32 - Writing successfully
+2023-10-17 18:43:42 INFO  Ammunition:28 - Getting sum
+2023-10-17 18:43:42 INFO  Ammunition:52 - Getting list

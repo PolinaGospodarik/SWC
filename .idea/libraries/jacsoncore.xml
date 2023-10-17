@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="jacsoncore">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/Ammunition/lib/jacsoncore" />
+      <root url="file://$PROJECT_DIR$/Ammunition/lib/log4j" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/Ammunition/lib/jacsoncore" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/Ammunition/lib/jacsoncore" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/Ammunition/lib/log4j" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/Ammunition/lib/jacsoncore" recursive="false" type="SOURCES" />
+  </library>
+</component>

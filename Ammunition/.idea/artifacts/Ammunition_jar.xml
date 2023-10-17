@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Ammunition:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Ammunition_jar</output-path>
+    <root id="archive" name="Ammunition.jar">
+      <element id="module-output" name="Ammunition" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j/log4j-slf4j2-impl-2.20.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j/log4j-api-2.16.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j/log4j-core-2.16.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j/log4j-core-2.16.0-sources.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jacsoncore/jackson-databind-2.15.3-javadoc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jacsoncore/jackson-databind-2.15.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jacsoncore/jackson-databind-2.15.3-sources.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jacsoncore/jackson-annotations-2.15.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jacsoncore/jackson-core-2.15.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

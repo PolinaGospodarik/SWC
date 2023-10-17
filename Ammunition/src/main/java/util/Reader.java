@@ -29,13 +29,13 @@ public class Reader {
                 List<Ammunition> loadedData = (List<Ammunition>) readObject;
                 logger.info("Reading successfully");
 
-                JOptionPane.showMessageDialog(null, "Данные успешно загружены из бинарного файла.");
+                JOptionPane.showMessageDialog(null, Localisation.getMessage("readSuccessfully"));
                 return loadedData;
             }
             return null;
 
         } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Произошла ошибка при чтении файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("readError"));
             logger.error("Reading error: "+ ex.toString());
             return null;
         }
@@ -71,12 +71,12 @@ public class Reader {
                 ammunition.add(Creator.Create(data[0], data[1], data[2], Double.parseDouble(data[3]), Double.parseDouble(data[4])));
             }
             logger.info("Reading successfully");
-            JOptionPane.showMessageDialog(null, "Данные успешно загружены из текстового файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("readSuccessfully"));
             return ammunition;
 
 
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Произошла ошибка при чтении файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("readError"));
             logger.error("Reading error: "+ ex.toString());
         }
         return null;
@@ -95,12 +95,12 @@ public class Reader {
             });
 
             logger.info("Reading successfully");
-            JOptionPane.showMessageDialog(null, "Данные успешно загружены из текстового файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("readSuccessfully"));
             return ammunition;
 
 
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Произошла ошибка при чтении файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("readError"));
             logger.error("Reading error: "+ ex.toString());
         }
         return null;

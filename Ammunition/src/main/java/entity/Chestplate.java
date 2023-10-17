@@ -7,6 +7,7 @@ import java.util.Random;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import main.java.util.Localisation;
 
 @JsonTypeName("Chestpate")
 public class Chestplate extends Ammunition {
@@ -75,6 +76,6 @@ public class Chestplate extends Ammunition {
 
     @Override
     public String toString() {
-        return "Тип: Chestplate"+super.toString();
+        return Localisation.getMessage("type")+": Chestplate"+super.toString();
     }
 }

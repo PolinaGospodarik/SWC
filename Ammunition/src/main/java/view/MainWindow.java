@@ -3,6 +3,7 @@ package main.java.view;
 
 import main.java.entity.Ammunition;
 import main.java.logic.Manager;
+import main.java.util.Localisation;
 import main.java.util.Reader;
 import main.java.logic.Sorter;
 import main.java.util.Writer;
@@ -19,9 +20,54 @@ public class MainWindow extends Component {
         new MainWindow();
     }
 
+    public void updateUI() {
+        frame.setTitle(Localisation.getMessage("windowName"));
+        view_but.setText(Localisation.getMessage("add"));
+        add_but.setText(Localisation.getMessage("view"));
+        summ_but.setText(Localisation.getMessage("pricesSum"));
+        max_but.setText(Localisation.getMessage("expensive"));
+        maxSort_but.setText(Localisation.getMessage("ascending"));
+        minSort_but.setText(Localisation.getMessage("descending"));
+        typeSort_but.setText(Localisation.getMessage("sortByType"));
+        clear_but.setText(Localisation.getMessage("clear"));
+
+        // Обновите названия меню и их элементов, если они есть
+        fileMenu.setText(Localisation.getMessage("file"));
+        outSave_menu.setText(Localisation.getMessage("saveOutput"));
+        saveCondition_menu.setText(Localisation.getMessage("saveCondition"));
+        saveToBinary_menu.setText(Localisation.getMessage("saveToBinary"));
+        saveToTxt_menu.setText(Localisation.getMessage("saveToTxt"));
+        saveToJson_menu.setText(Localisation.getMessage("saveToJson"));
+        loadCondition_menu.setText(Localisation.getMessage("loadCondition"));
+        loadFromBinary_menu.setText(Localisation.getMessage("loadFormBinary"));
+        loadFromTxt_menu.setText(Localisation.getMessage("loadFormTxt"));
+        loadFromJson_menu.setText(Localisation.getMessage("loadFromJson"));
+        languageMenu.setText(Localisation.getMessage("language"));
+    }
+    private final JFrame frame;
+    private final JButton view_but;
+    private final JButton add_but;
+    private final JButton summ_but;
+    private final JButton max_but;
+    private final JButton maxSort_but;
+    private final JButton minSort_but;
+    private final JButton typeSort_but;
+    private final JButton clear_but;
+    private final JMenu fileMenu;
+    private final JMenuItem outSave_menu;
+    private final JMenu saveCondition_menu;
+    private final JMenuItem saveToBinary_menu;
+    private final JMenuItem saveToTxt_menu;
+    private final JMenuItem saveToJson_menu;
+    private final JMenu loadCondition_menu;
+    private final JMenuItem loadFromBinary_menu;
+    private final JMenuItem loadFromTxt_menu;
+    private final JMenuItem loadFromJson_menu;
+    private JMenu languageMenu;
+
     MainWindow()
     {
-        JFrame frame = new JFrame("Аммуниция");
+        frame = new JFrame(Localisation.getMessage("windowName"));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
 
@@ -34,15 +80,16 @@ public class MainWindow extends Component {
         panel.add(new JScrollPane(textArea), BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(7, 1));
+        buttonPanel.setLayout(new GridLayout(8, 1));
 
-        JButton view_but = new JButton("Добавить");
-        JButton add_but = new JButton("Вывести");
-        JButton summ_but = new JButton("Сумма цен");
-        JButton max_but = new JButton("Самая дорогая");
-        JButton maxSort_but = new JButton("Вывод по возрастанию цены");
-        JButton minSort_but = new JButton("Вывод по убыванию цены");
-        JButton typeSort_but = new JButton("Отсортировать по типу аммуници");
+        view_but = new JButton(Localisation.getMessage("add"));
+        add_but = new JButton(Localisation.getMessage("view"));
+        summ_but = new JButton(Localisation.getMessage("pricesSum"));
+        max_but = new JButton(Localisation.getMessage("expensive"));
+        maxSort_but = new JButton(Localisation.getMessage("ascending"));
+        minSort_but = new JButton(Localisation.getMessage("descending"));
+        typeSort_but = new JButton(Localisation.getMessage("sortByType"));
+        clear_but = new JButton(Localisation.getMessage("clear"));
 
 
         buttonPanel.add(view_but);
@@ -52,24 +99,25 @@ public class MainWindow extends Component {
         buttonPanel.add(maxSort_but);
         buttonPanel.add(minSort_but);
         buttonPanel.add(typeSort_but);
+        buttonPanel.add(clear_but);
 
         panel.add(buttonPanel, BorderLayout.EAST);
         frame.add(panel);
 
         JMenuBar menuBar = new JMenuBar();
 
-        JMenu fileMenu = new JMenu("Файл");
-        JMenuItem outSave_menu= new JMenuItem("Сохранить вывод");
+        fileMenu = new JMenu(Localisation.getMessage("file"));
+        outSave_menu= new JMenuItem(Localisation.getMessage("saveOutput"));
 
-        JMenu saveCondition_menu = new JMenu("Сохранить состояние");
-        JMenuItem saveToBinary_menu= new JMenuItem("Сохранить в биинарный файл");
-        JMenuItem saveToTxt_menu= new JMenuItem("Сохранить в тестовый файл");
-        JMenuItem saveToJson_menu= new JMenuItem("Сохранить в Json");
+        saveCondition_menu = new JMenu(Localisation.getMessage("saveCondition"));
+        saveToBinary_menu= new JMenuItem(Localisation.getMessage("saveToBinary"));
+        saveToTxt_menu= new JMenuItem(Localisation.getMessage("saveToTxt"));
+        saveToJson_menu= new JMenuItem(Localisation.getMessage("saveToJson"));
 
-        JMenu loadCondition_menu = new JMenu("Загрузить состояние");
-        JMenuItem loadFromBinary_menu= new JMenuItem("Загрузить из биинарного файла");
-        JMenuItem loadFromTxt_menu= new JMenuItem("Загрузить из тестового файла");
-        JMenuItem loadFromJson_menu= new JMenuItem("Загрузить из Json");
+        loadCondition_menu = new JMenu(Localisation.getMessage("loadCondition"));
+        loadFromBinary_menu= new JMenuItem(Localisation.getMessage("loadFormBinary"));
+        loadFromTxt_menu= new JMenuItem(Localisation.getMessage("loadFormTxt"));
+        loadFromJson_menu= new JMenuItem(Localisation.getMessage("loadFromJson"));
 
         fileMenu.add(outSave_menu);
 
@@ -83,7 +131,15 @@ public class MainWindow extends Component {
         loadCondition_menu.add(loadFromJson_menu);
         fileMenu.add(loadCondition_menu);
 
+        languageMenu = new JMenu(Localisation.getMessage("language"));
+        JMenuItem russianLanguage = new JMenuItem("Русский");
+        JMenuItem englishLanguage = new JMenuItem("English");
+
+        languageMenu.add(englishLanguage);
+        languageMenu.add(russianLanguage);
+
         menuBar.add(fileMenu);
+        menuBar.add(languageMenu);
         frame.setJMenuBar(menuBar);
 
 
@@ -93,9 +149,10 @@ public class MainWindow extends Component {
 
         add_but.addActionListener(e -> textArea.append("-------\n" + Printer.printInfo()));
 
-        summ_but.addActionListener(e -> textArea.append("-------\n" + "Общая сумма =" + Manager.Sum() + "\n"));
+        summ_but.addActionListener(e -> textArea.append("-------\n" + Localisation.getMessage("totalAmount")+" =" + Manager.Sum() + "\n"));
 
         max_but.addActionListener(e -> textArea.append("-------\n" + Manager.MaxPrice().toString() + "\n"));
+        clear_but.addActionListener(e -> textArea.setText(""));
 
         maxSort_but.addActionListener(e -> {
             Sorter.bubbleSorterUp();
@@ -111,7 +168,7 @@ public class MainWindow extends Component {
 
         saveToTxt_menu.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Текстовые файлы(*.txt)", "txt");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(Localisation.getMessage("textFiles")+"(*.txt)", "txt");
             fileChooser.setFileFilter(filter);
 
             int returnValue = fileChooser.showSaveDialog(null);
@@ -124,7 +181,7 @@ public class MainWindow extends Component {
 
         saveToBinary_menu.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Бинарные файлы (*.bin)", "bin");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(Localisation.getMessage("binaryFiles")+"(*.bin)", "bin");
             fileChooser.setFileFilter(filter);
 
             int returnValue = fileChooser.showSaveDialog(null);
@@ -138,7 +195,7 @@ public class MainWindow extends Component {
 
         saveToJson_menu.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Бинарные файлы (*.json)", "json");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(Localisation.getMessage("jsonFiles")+"(*.json)", "json");
             fileChooser.setFileFilter(filter);
 
             int returnValue = fileChooser.showSaveDialog(null);
@@ -153,7 +210,7 @@ public class MainWindow extends Component {
 
         outSave_menu.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Текстовые файлы(*.txt)", "txt");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(Localisation.getMessage("textFiles")+"(*.txt)", "txt");
             fileChooser.setFileFilter(filter);
 
             int returnValue = fileChooser.showSaveDialog(null);
@@ -168,7 +225,7 @@ public class MainWindow extends Component {
             JFileChooser fileChooser = new JFileChooser();
 
             // Создаем фильтр для файлов с расширением .bin
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Бинарные файлы (*.bin)", "bin");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(Localisation.getMessage("binaryFiles")+"(*.bin)", "bin");
             fileChooser.setFileFilter(filter);
 
             int returnValue = fileChooser.showOpenDialog(null);
@@ -185,7 +242,7 @@ public class MainWindow extends Component {
                         Manager.Add(a);
                     }
                 }
-                else textArea.append("Файл не содержит данных");
+                else textArea.append(Localisation.getMessage("fileWithoutData"));
 
             }
         });
@@ -194,7 +251,7 @@ public class MainWindow extends Component {
             JFileChooser fileChooser = new JFileChooser();
 
             // Создаем фильтр для файлов с расширением .txt
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Текстовые файлы (*.txt)", "txt");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(Localisation.getMessage("textFiles")+"(*.txt)", "txt");
             fileChooser.setFileFilter(filter);
 
             int returnValue = fileChooser.showOpenDialog(null);
@@ -211,7 +268,7 @@ public class MainWindow extends Component {
                         Manager.Add(a);
                     }
                 }
-                else textArea.append("Файл не содержит данных");
+                else textArea.append(Localisation.getMessage("fileWithoutData"));
             }
         });
 
@@ -219,7 +276,7 @@ public class MainWindow extends Component {
             JFileChooser fileChooser = new JFileChooser();
 
             // Создаем фильтр для файлов с расширением .bin
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Json файлы (*.json)", "json");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(Localisation.getMessage("jsonFiles")+"(*.json)", "json");
             fileChooser.setFileFilter(filter);
 
             int returnValue = fileChooser.showOpenDialog(null);
@@ -236,10 +293,21 @@ public class MainWindow extends Component {
                         Manager.Add(a);
                     }
                 }
-                else textArea.append("Файл не содержит данных");
+                else textArea.append(Localisation.getMessage("fileWithoutData"));
 
             }
         });
+
+        russianLanguage.addActionListener(e -> {
+            Localisation.setLocale("ru", "RU");
+            updateUI();
+        });
+
+        englishLanguage.addActionListener(e -> {
+            Localisation.setLocale("en", "US");
+            updateUI();
+        });
+
 
     }
 }

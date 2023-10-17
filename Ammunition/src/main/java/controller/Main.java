@@ -1,12 +1,14 @@
 package main.java.controller;
 
 
+import main.java.util.Localisation;
 import main.java.view.MainWindow;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(System.getProperty("APP_HOME"));
         MainWindow.main(null);
-
     }
 }

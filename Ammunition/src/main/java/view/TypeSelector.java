@@ -5,6 +5,7 @@ package main.java.view;
 
 import main.java.entity.Ammunition;
 import main.java.logic.Sorter;
+import main.java.util.Localisation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,9 +36,9 @@ public class TypeSelector extends JDialog {
         buttonGroup.add(radioButton2);
         buttonGroup.add(radioButton3);
 
-        JLabel label1 = new JLabel("Мечи");
-        JLabel label2 = new JLabel("Нагрудники");
-        JLabel label3 = new JLabel("Шлемы");
+        JLabel label1 = new JLabel(Localisation.getMessage("swords"));
+        JLabel label2 = new JLabel(Localisation.getMessage("chestplates"));
+        JLabel label3 = new JLabel(Localisation.getMessage("helmets"));
 
 
 
@@ -50,10 +51,10 @@ public class TypeSelector extends JDialog {
 
         radioButton1.setSelected(true);
 
-        JButton submitButton = new JButton("Отправить");
+        JButton submitButton = new JButton();
 
         // Создаем вложенное окно
-        JDialog frame = new JDialog(parent, "Второе окно", true);
+        JDialog frame = new JDialog(parent, Localisation.getMessage("getType"), true);
         frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         frame.setSize(200, 200);
 

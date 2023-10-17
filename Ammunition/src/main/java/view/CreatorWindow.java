@@ -3,6 +3,7 @@ package main.java.view;
 
 import main.java.logic.Manager;
 import main.java.util.Creator;
+import main.java.util.Localisation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,33 +11,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreatorWindow extends JDialog {
-    private static String res = "Добавлено!";
+
 
     public CreatorWindow(JFrame parent) {
-        super(parent, "Второе окно", true);
+        super(parent, Localisation.getMessage("add"), true);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setSize(400, 200);
 
         // Остальной код вашего окна остается без изменений
         JPanel menuPanel = new JPanel();
-        JComboBox<String> comboBox = new JComboBox<>(new String[]{"Меч", "Нагрудник", "Шлем"});
+        JComboBox<String> comboBox = new JComboBox<>(new String[]{Localisation.getMessage("sword"), Localisation.getMessage("chestplate"), Localisation.getMessage("helmet")});
         menuPanel.add(comboBox);
 
         // Создаем панель для ввода полей и кнопки
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(5, 2));
 
-        JCheckBox checkBox = new JCheckBox("Случайно");
+        JCheckBox checkBox = new JCheckBox(Localisation.getMessage("random"));
 
         JTextField textField1 = new JTextField(20);
         JTextField textField2 = new JTextField(20);
         JTextField textField3 = new JTextField(20);
         JTextField textField4 = new JTextField(20);
 
-        JLabel label1 = new JLabel("Название:");
-        JLabel label2 = new JLabel("Материал:");
-        JLabel label3 = new JLabel("Вес:");
-        JLabel label4 = new JLabel("Стоимость");
+        JLabel label1 = new JLabel(Localisation.getMessage("name")+":");
+        JLabel label2 = new JLabel(Localisation.getMessage("material")+":");
+        JLabel label3 = new JLabel(Localisation.getMessage("weight")+":");
+        JLabel label4 = new JLabel(Localisation.getMessage("cost")+":");
 
         inputPanel.add(label1);
         inputPanel.add(textField1);
@@ -48,10 +49,10 @@ public class CreatorWindow extends JDialog {
         inputPanel.add(textField4);
         inputPanel.add(checkBox);
 
-        JButton submitButton = new JButton("Отправить");
+        JButton submitButton = new JButton(Localisation.getMessage("send"));
 
         // Создаем вложенное окно
-        JDialog frame = new JDialog(parent, "Второе окно", true);
+        JDialog frame = new JDialog(parent, Localisation.getMessage("add"), true);
         frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         frame.setSize(400, 200);
 
@@ -68,14 +69,14 @@ public class CreatorWindow extends JDialog {
 
 
             Map<String, String> dict = new HashMap<>();
-            dict.put("Нагрудник", "Chestplate");
-            dict.put("Шлем", "Helmet");
-            dict.put("Меч", "Sword");
+            dict.put(Localisation.getMessage("chestplate"), "Chestplate");
+            dict.put(Localisation.getMessage("helmet"), "Helmet");
+            dict.put(Localisation.getMessage("sword"), "Sword");
 
             if(checkBox.isSelected())
             {
                 Manager.Add(Creator.Create(dict.get((String) comboBox.getSelectedItem())));
-                JOptionPane.showMessageDialog(parent, "Добавлено");
+                JOptionPane.showMessageDialog(parent, Localisation.getMessage("added"));
             }
             else
             {
@@ -87,9 +88,9 @@ public class CreatorWindow extends JDialog {
                             Integer.parseInt(textField3.getText()),
                             Integer.parseInt(textField4.getText())
                     ));
-                    JOptionPane.showMessageDialog(parent, "Добавлено");
+                    JOptionPane.showMessageDialog(parent, Localisation.getMessage("added"));
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(parent, "Ошибка");
+                    JOptionPane.showMessageDialog(parent, Localisation.getMessage("error"));
                 }
             }
 
@@ -110,10 +111,14 @@ public class CreatorWindow extends JDialog {
             textField4.setEnabled(!isSelected);
             });
 
+
+
     }
 
     public static void Show(JFrame parent) {
         CreatorWindow dialog = new CreatorWindow(parent);
         dialog.setVisible(true);
     }
+
+
 }

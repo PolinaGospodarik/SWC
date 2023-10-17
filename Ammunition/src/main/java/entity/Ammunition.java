@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import main.java.util.Localisation;
 
 
 @JsonTypeInfo(
@@ -90,7 +91,7 @@ public abstract class Ammunition implements Serializable {
     }
 
     public String toString() {
-        return "\n Наименование: " + getName() + "\n Материал:  " + getMaterial() + "\n Вес:  " + getWeight() + "\n Цена:  " + getPrice();
+        return "\n"+ Localisation.getMessage("name")+ ": " + getName() + "\n"+ Localisation.getMessage("material")+ ":  " + getMaterial() + "\n"+ Localisation.getMessage("weight")+ ":  " + getWeight() + "\n"+ Localisation.getMessage("cost")+ ":  " + getPrice();
     }
 
 }

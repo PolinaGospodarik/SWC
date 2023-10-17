@@ -8,3 +8,15 @@
 2023-10-17 18:43:30 INFO  Ammunition:32 - Writing successfully
 2023-10-17 18:43:42 INFO  Ammunition:28 - Getting sum
 2023-10-17 18:43:42 INFO  Ammunition:52 - Getting list
+2023-10-17 21:23:37 INFO  Ammunition:28 - Getting sum
+2023-10-17 21:23:38 INFO  Ammunition:39 - Getting max price
+2023-10-17 21:30:13 INFO  Ammunition:83 - Try creating a random object
+2023-10-17 21:30:13 INFO  Ammunition:90 - Created sword
+2023-10-17 21:30:13 INFO  Ammunition:16 - Try to add object to list
+2023-10-17 21:30:13 INFO  Ammunition:22 - Successfully 
+2023-10-17 21:30:19 INFO  Ammunition:24 - Try writing to binary file C:\Users\Максим\Desktop\b.bin
+2023-10-17 21:30:19 INFO  Ammunition:32 - Writing successfully
+2023-10-17 21:30:26 INFO  Ammunition:21 - Try read from binary file C:\Users\Максим\Desktop\b.bin
+2023-10-17 21:30:26 INFO  Ammunition:30 - Reading successfully
+2023-10-17 21:30:30 INFO  Ammunition:16 - Try to add object to list
+2023-10-17 21:30:30 INFO  Ammunition:22 - Successfully 

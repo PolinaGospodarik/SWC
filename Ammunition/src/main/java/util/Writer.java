@@ -30,9 +30,9 @@ public class Writer {
             objectOutputStream.writeObject(Manager.getList());
             objectOutputStream.close();
             logger.info("Writing successfully");
-            JOptionPane.showMessageDialog(null, "Файл успешно сохранен.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("saveSuccessfully"));
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Произошла ошибка при сохранении файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("saveError"));
             logger.error("Writing error: "+ ex.toString());
         }
 
@@ -55,9 +55,9 @@ public class Writer {
             writer.write(Printer.serialize(Manager.getList()));
             writer.close();
             logger.info("Writing successfully");
-            JOptionPane.showMessageDialog(null, "Файл успешно сохранен.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("saveSuccessfully"));
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Произошла ошибка при сохранении файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("saveError"));
             logger.error("Writing error: "+ ex.toString());
         }
     }
@@ -78,9 +78,9 @@ public class Writer {
             writer.write(json);
             writer.close();
             logger.info("Writing successfully");
-            JOptionPane.showMessageDialog(null, "Файл успешно сохранен.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("saveSuccessfully"));
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Произошла ошибка при сохранении файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("saveError"));
             logger.error("Writing error: "+ ex.toString());
         }
     }
@@ -102,9 +102,9 @@ public class Writer {
             writer.close();
             logger.info("Writing successfully");
 
-            JOptionPane.showMessageDialog(null, "Файл успешно сохранен.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("saveSuccessfully"));
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Произошла ошибка при сохранении файла.");
+            JOptionPane.showMessageDialog(null, Localisation.getMessage("saveError"));
             logger.error("Writing error: "+ ex.toString());
         }
     }
